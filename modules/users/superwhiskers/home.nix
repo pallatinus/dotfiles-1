@@ -17,7 +17,6 @@
     ./graphical.nix
     ./shell.nix
     ./multimedia.nix
-    ./nixpkgs.nix
     ./packages.nix
     ./neovim.nix
   ];

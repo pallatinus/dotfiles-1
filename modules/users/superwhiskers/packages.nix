@@ -42,7 +42,8 @@
     xsv
     tokei
     lftp
-    tilp
+    # TODO: fetch using flake from https://github.com/anna328p/tilp-nix/archive/master.tar.gz
+    # tilp
     htop
     gnome3.gnome-tweak-tool
     gnome3.gnome-shell-extensions
