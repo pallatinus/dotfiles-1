@@ -1,0 +1,89 @@
+{
+  "nodes": {
+    "home-manager": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1620692082,
+        "narHash": "sha256-s/eBXs4OI47yPWNTKoAg4f/H7wMLyO+VEMmobXkzfI8=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "23769994e8f7b212d9a257799173b120ed87736b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "modules": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "narHash": "sha256-cj4nIQUz0LZV0AWicrneOB93lNe3QUj9LFB1ygtVGvI=",
+        "path": "./modules",
+        "type": "path"
+      },
+      "original": {
+        "path": "./modules",
+        "type": "path"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1621063114,
+        "narHash": "sha256-XNk4RH+CRwQGvSRaD9dQzPH41E+6rrJEWs5xptQFII8=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "ef95fa40e9f76d18fddb631fd5fcdf6585b632b9",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1620993025,
+        "narHash": "sha256-tFVVKSPFkM4sXLXy7Y4qs9qtW82NoEQio8PvDNrsO9k=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "5817a051796680d71c358e8bb38447b04c2d0553",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable-small",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "home-manager": "home-manager",
+        "modules": "modules",
+        "nixpkgs": "nixpkgs_2",
+        "utils": "utils"
+      }
+    },
+    "utils": {
+      "locked": {
+        "narHash": "sha256-BZETZbhca8YgX0BSTC/B5Pwh5zkbfOVb+MdmgqTHyGU=",
+        "path": "./utils",
+        "type": "path"
+      },
+      "original": {
+        "path": "./utils",
+        "type": "path"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
