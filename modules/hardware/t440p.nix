@@ -58,6 +58,9 @@
   # keep the cpu microcode up to date
   hardware.cpu.intel.updateMicrocode = true;
 
+  # allow redistributable firmware
+  hardware.enableRedistributableFirmware = true;
+
   # enable opengl
   hardware.opengl = {
     enable = true;
