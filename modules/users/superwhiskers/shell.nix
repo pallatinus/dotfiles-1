@@ -14,7 +14,7 @@
 { config, ... }: {
   # enable the alacritty terminal emulator
   programs.alacritty = {
-    enable = true;
+    enable = false;
     settings = {
       window = {
         padding = {

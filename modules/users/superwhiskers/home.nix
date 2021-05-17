@@ -19,6 +19,7 @@
     ./multimedia.nix
     ./packages.nix
     ./neovim.nix
+    ./gnome.nix
   ];
 
   home = {

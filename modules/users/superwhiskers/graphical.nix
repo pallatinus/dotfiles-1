@@ -15,16 +15,6 @@
   # set the xorg dpi
   xresources.properties = { "Xft.dpi" = "75"; };
 
-  # gtk configuration
-  gtk = {
-    enable = true;
-    iconTheme = {
-      package = pkgs.papirus-icon-theme;
-      name = "Papirus-Dark";
-    };
-    theme.name = "Adwaita-dark";
-  };
-
   # qt configuration
   qt = {
     enable = true;
