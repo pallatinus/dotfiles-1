@@ -25,9 +25,44 @@
   # gnome-terminal configuration
   programs.gnome-terminal = {
     enable = true;
-    profile.default = {
+    profile."b1dcc9dd-5262-4d8d-a863-c897e6d979b9" = {
       default = true;
-      visibleName = "default";
+      visibleName = "superwhiskers";
+      audibleBell = false;
+      colors = {
+        backgroundColor = "#2c2525";
+        foregroundColor = "#fff1f3";
+        cursor = {
+          foreground = "#2c2525";
+          background = "#fff1f3";
+        };
+        highlight = {
+          foreground = "#2c2525";
+          background = "#fff1f3";
+        };
+        palette = [
+          "#2c2525"
+          "#fd6883"
+          "#adda78"
+          "#f9cc6c"
+          "#f38d70"
+          "#a8a9eb"
+          "#85dacc"
+          "#fff1f3"
+          "#72696a"
+          "#fd6883"
+          "#adda78"
+          "#f9cc6c"
+          "#f38d70"
+          "#a8a9eb"
+          "#85dacc"
+          "#fff1f3"
+        ];
+      };
+      cursorBlinkMode = "off";
+      cursorShape = "block";
+      showScrollbar = false;
+      scrollOnOutput = false;
     };
   };
 

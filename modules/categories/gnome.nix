@@ -60,7 +60,6 @@
     file-roller
     geary
     gnome-disk-utility
-    gnome-terminal
     seahorse
     sushi
   ];

@@ -51,6 +51,7 @@
     nnn
     pavucontrol
     mosh
+    gnome.dconf-editor
 
     # misc
     jdk
