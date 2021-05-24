@@ -18,7 +18,8 @@
     config = {
       ytdl-format =
         "((bestvideo[vcodec^=vp9]/bestvideo)+(bestaudio[acodec=opus]/bestaudio[acodec=vorbis]/bestaudio[acodec=aac]/bestaudio))/best";
-      gpu-context = "wayland";
+      sub-auto = "fuzzy";
+      ytdl-raw-options = "write-auto-sub=,write-sub=,sub-lang=en";
       vo = "gpu";
     };
     scripts = with pkgs.mpvScripts; [ sponsorblock ];
