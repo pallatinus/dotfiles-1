@@ -35,6 +35,7 @@
     anki
     keepassxc
     gimp
+    rx
     jetbrains.idea-community
 
     # utilities
