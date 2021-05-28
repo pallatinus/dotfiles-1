@@ -47,18 +47,11 @@
 
 ;;; line numbers
 
-;;; TODO: same as init.fnl
-(defn terminal-set-nonumber []
-  (nvim.ex.set :nonumber))
-
-(defn terminal-set-number []
-  (nvim.ex.set :number))
-
 (nvim.ex.set :number)                            ; line numbers are enabled by default
 (augroup :number_terminal
          ;; disable line numbers upon entering a terminal
-         (autocmd :TermEnter :* (viml->fn terminal-set-nonumber))
-         (autocmd :TermLeave :* (viml->fn terminal-set-number)))
+         (autocmd :TermEnter :* (inline-foreign (nvim.ex.set :nonumber)))
+         (autocmd :TermLeave :* (inline-foreign (nvim.ex.set :number))))
 
 ;;; js highlighting
 

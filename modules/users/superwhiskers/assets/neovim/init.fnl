@@ -33,10 +33,6 @@
 
 ;;; textwidth
 
-;;; TODO: look into handling this by making a macro that takes an sexpr and anonymously defines it
-(defn markdown-set-textwidth []
-  (set nvim.bo.textwidth 99))
-
 (augroup :markdown_textwidth
          ;; set textwidth to 99 in markdown files
-         (autocmd :FileType "markdown" (viml->fn markdown-set-textwidth)))
+         (autocmd :FileType "markdown" (inline-foreign (set nvim.bo.textwidth 99))))

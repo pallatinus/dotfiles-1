@@ -11,22 +11,31 @@
 ;;;; OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 ;;;; PERFORMANCE OF THIS SOFTWARE.
 
-;; define an autogroup easily
 (fn augroup [name ...]
-  `(do
-     (nvim.ex.augroup ,(tostring name))
-     (nvim.ex.autocmd_)
-     ,...
-     (nvim.ex.augroup :END)))
+   "Shorthand for defining an autogroup"
+   `(do
+       (nvim.ex.augroup ,(tostring name))
+       (nvim.ex.autocmd_)
+       ,(list `do ...)
+       (nvim.ex.augroup :END)))
 
-;; shorthand for nvim.ex.autocmd
 (fn autocmd [...]
+   "Shorthand for nvim.ex.autocmd"
   `(nvim.ex.autocmd ,...))
 
-;; shorthand for calling a lua function. useful in autocommands
-(fn viml->fn [name]
+(fn foreign [name]
+   "Insert a call to a fennel function from vim"
    `(.. "lua require('" *module-name* "')['" ,(tostring name) "']()"))
+
+(fn inline-foreign [...]
+   "Wrap the enclosed S-expressions in a function and insert a call to them from vim"
+   (let [fun (gensym)]
+      `(do
+          (defn ,fun []
+             ,(list `do ...))
+          (.. "lua require('" *module-name* "')['" ,(tostring fun) "']()"))))
 
 {:augroup augroup
  :autocmd autocmd
- :viml->fn viml->fn}
+ :foreign foreign
+ :inline-foreign inline-foreign}
