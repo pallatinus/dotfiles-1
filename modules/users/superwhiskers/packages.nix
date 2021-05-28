@@ -38,6 +38,9 @@
     rx
     jetbrains.idea-community
 
+    # finance
+    electrum
+
     # utilities
     nixfmt
     xsv
