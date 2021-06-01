@@ -17,9 +17,9 @@
 
 ;;; theme
 
-(set nvim.o.background :dark)                    ; use the dark background
-(nvim.ex.set :termguicolors)                     ; enable 24-bit color in the terminal
-(nvim.ex.colorscheme "monokai_pro")              ; use monokai pro as the theme
+(set nvim.o.background :dark)                         ; use the dark background
+(nvim.ex.set :termguicolors)                          ; enable 24-bit color in the terminal
+(nvim.ex.colorscheme "monokai_pro")                   ; use monokai pro as the theme
 
 ;;; terminal
 
@@ -43,11 +43,11 @@
 ;;; whitespace
 
 (set nvim.o.listchars "eol:↵,tab:··,space:·")    ; control how some characters are displayed
-(nvim.ex.set :list)                              ; enable list mode
+(nvim.ex.set :list)                                   ; enable list mode
 
 ;;; line numbers
 
-(nvim.ex.set :number)                            ; line numbers are enabled by default
+(nvim.ex.set :number)                                 ; line numbers are enabled by default
 (augroup :number_terminal
          ;; disable line numbers upon entering a terminal
          (autocmd :TermEnter :* (inline-foreign (nvim.ex.set :nonumber)))
