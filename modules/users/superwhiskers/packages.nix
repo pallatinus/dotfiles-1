@@ -36,7 +36,6 @@
     keepassxc
     gimp
     rx
-    jetbrains.idea-community
 
     # finance
     electrum
