@@ -35,9 +35,6 @@
       ];
     };
     extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
-
-    # swappiness value adjustment
-    kernel.sysctl."vm.swappiness" = 10;
   };
 
   # enable the trackpoint
@@ -66,9 +63,6 @@
     enable = true;
     driSupport32Bit = true;
   };
-
-  # disable the nvidia gpu
-  hardware.nvidiaOptimus.disable = true;
 
   # fix the xserver dpi
   services.xserver.dpi = 75;

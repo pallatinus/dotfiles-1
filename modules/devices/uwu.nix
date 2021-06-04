@@ -55,24 +55,27 @@
     android-udev-rules
   ];
 
+  # enable trim
+  services.fstrim.enable = true;
+
+  # disable the nvidia gpu
+  hardware.nvidiaOptimus.disable = true;
+
   # enable flatpak
   services.flatpak.enable = true;
 
   # configure partitioning
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by-uuid/68be6398-3103-4565-9c73-e21c0b4a0c0e";
+      device = "/dev/disk/by-uuid/7de63251-d690-4e0b-b006-09c63e451680";
       fsType = "ext4";
       options = [ "noatime" ];
     };
 
     "/boot" = {
-      device = "/dev/disk/by-uuid/A300-92C8";
+      device = "/dev/disk/by-uuid/0313-94DC";
       fsType = "vfat";
       options = [ "noatime" ];
     };
   };
-
-  swapDevices =
-    [{ device = "/dev/disk/by-uuid/fb641a7c-1151-4a67-b195-06708bf627fc"; }];
 }
