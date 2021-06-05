@@ -18,36 +18,34 @@
   # use the ondemand cpu frequency governor
   powerManagement.cpuFreqGovernor = "ondemand";
 
-  # network interface configuration
-  networking = {
-    hostName = "uwu";
-    interfaces = {
-      enp0s25.useDHCP = true;
-      wlan0.useDHCP = true;
-    };
+  # set the hostname
+  networking.hostName = "uwu";
+
+  # enable specific network interfaces
+  networking.interfaces = {
+    enp0s25.useDHCP = true;
+    wlan0.useDHCP = true;
   };
 
-  # we don't want networkmanager to mess with our dns settings
-  networking.networkmanager.dns = "none";
-
-  # set the domain name resolver
-  networking.nameservers =
-    [ "155.138.240.237" "2001:19f0:6401:b3d:5400:2ff:fe5a:fb9f" ];
-
-  # change some settings on the firewall
+  # configure the firewall
   networking.firewall = {
     # necessary to make mullvad work (?)
     checkReversePath = false;
 
     # expose the port used for slsk
-    allowedTCPPorts = [ 58868 ];
+    allowedTCPPorts = [ 57678 ];
   };
 
-  # enable mullvad
-  services.mullvad-vpn.enable = true;
+  # configure dnsmasq
+  services.dnsmasq = {
+    enable = true;
 
-  # disable nixos-help
-  documentation.nixos.enable = false;
+    # set the dns servers
+    servers = [ "155.138.240.237" "2001:19f0:6401:b3d:5400:2ff:fe5a:fb9f" ];
+  };
+
+  # enable the mullvad service
+  services.mullvad-vpn.enable = true;
 
   # make the numworks and android udev rules available
   services.udev.packages = with pkgs; [
@@ -57,6 +55,19 @@
 
   # enable trim
   services.fstrim.enable = true;
+
+  # enable garbage collection once a week
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 2d";
+  };
+
+  # enable automatic store optimization 
+  nix.optimise = {
+    automatic = true;
+    dates = [ "daily" ];
+  };
 
   # disable the nvidia gpu
   hardware.nvidiaOptimus.disable = true;

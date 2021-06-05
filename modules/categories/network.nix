@@ -11,7 +11,7 @@
 # OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 # PERFORMANCE OF THIS SOFTWARE.
 
-{
+{ lib, ... }: {
   # configure and enable networkmanager
   networking = {
     networkmanager = {
@@ -23,5 +23,8 @@
 
     # this is discouraged (but enabled by default?)
     useDHCP = false;
+
+    # for some reason, this is enabled by default
+    dhcpcd.enable = lib.mkDefault false;
   };
 }
