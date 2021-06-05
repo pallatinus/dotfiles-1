@@ -28,9 +28,14 @@
   # enable the beets music library manager
   programs.beets = {
     enable = true;
+    package = (pkgs.beets.overrideAttrs (oldAttrs: {
+      propagatedBuildInputs = with pkgs.python39Packages;
+        [ pillow-simd ] ++ oldAttrs.propagatedBuildInputs;
+    })).override { pythonPackages = pkgs.python39Packages; };
     settings = {
       directory = config.xdg.userDirs.music;
       library = "${config.xdg.userDirs.music}/musiclibrary.db";
+      plugins = [ "embedart" "fetchart" "thumbnails" ];
     };
   };
 }
