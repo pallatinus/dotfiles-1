@@ -11,9 +11,8 @@
 ;;;; OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 ;;;; PERFORMANCE OF THIS SOFTWARE.
 
-(module config.init
-  {autoload {nvim aniseed.nvim}
-   require-macros [config.macros]})
+(module config.init {autoload {nvim aniseed.nvim}
+                     require-macros [config.macros]})
 
 (require :config.display)
 (require :config.mapping)
@@ -22,17 +21,18 @@
 (require :config.startify)
 (require :config.neoformat)
 (require :config.quick-scope)
+(require :config.treesitter)
 
 ;;; generic
 
-(nvim.ex.set :hidden)                  ; keep buffers open in the background
-(nvim.ex.filetype :plugin :indent :on) ; enable filetype detection, plugins, and indentation
-(nvim.ex.syntax :enable)               ; enable syntax highlighting
-(set nvim.o.modelines 0)               ; disable modelines
-(nvim.ex.set :wrap)                    ; enable line wrapping
+(nvim.ex.set :hidden)
+(nvim.ex.filetype :plugin :indent :on)
+(nvim.ex.syntax :enable)
+(set nvim.o.modelines 0)
+(nvim.ex.set :wrap)
 
 ;;; textwidth
 
-(augroup :markdown_textwidth
-         ;; set textwidth to 99 in markdown files
-         (autocmd :FileType "markdown" (inline-foreign (set nvim.bo.textwidth 99))))
+(augroup :formatted_textwidth ;; set textwidth to 99 in formatted text files
+         (autocmd :FileType "markdown,pandoc"
+                  (inline-foreign (set nvim.bo.textwidth 99))))

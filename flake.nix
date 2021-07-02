@@ -15,14 +15,24 @@
   description = "arbitrarily structured system configuration database";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
+    # currently broken
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url =
+      "github:NixOS/nixpkgs/28118baccee4b5a8dd6536e51ec4d6655cec8fca";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    neovim-nightly-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     modules = {
       url = "path:./modules";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        neovim-nightly-overlay.follows = "neovim-nightly-overlay";
+      };
     };
     utils.url = "path:./utils";
   };
@@ -46,6 +56,7 @@
             network
             nix
             printing
+            # virtualization
           ]) ++ (with modules.hardware; [ t440p ])
           ++ (with modules.devices; [ uwu ]) ++ [ home-manager-module ];
       };

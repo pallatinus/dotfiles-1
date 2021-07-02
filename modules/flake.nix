@@ -14,21 +14,33 @@
 {
   description = "a set of nixos modules that compose my systems";
 
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs";
-
-  outputs = { self, nixpkgs }: {
-    nixosModules = {
-      # configuration relating to specific users
-      users = import ./users;
-
-      # configuration relating to categories of configuration options
-      categories = import ./categories;
-
-      # configuration relating to specific bits of hardware
-      hardware = import ./hardware;
-
-      # device-specific configuration
-      devices = import ./devices;
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs";
+    neovim-nightly-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
+
+  outputs = inputs:
+    let
+      provideInputs = let
+        mapper = name: category:
+          category (inputs // { provideInputs = provideInputs; });
+      in builtins.mapAttrs mapper;
+    in {
+      nixosModules = provideInputs {
+        # configuration relating to specific users
+        users = import ./users;
+
+        # configuration relating to categories of configuration options
+        categories = import ./categories;
+
+        # configuration relating to specific bits of hardware
+        hardware = import ./hardware;
+
+        # device-specific configuration
+        devices = import ./devices;
+      };
+    };
 }

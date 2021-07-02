@@ -11,14 +11,14 @@
 ;;;; OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 ;;;; PERFORMANCE OF THIS SOFTWARE.
 
-(module config.neoformat
-  {autoload {nvim aniseed.nvim}}) 
+(module config.neoformat {autoload {nvim aniseed.nvim}})
 
 ;;; formatter definitions
 
-(set nvim.g.neoformat_haskell_ormolu {:exe "ormolu"
-                                      :args []})
+(set nvim.g.neoformat_haskell_ormolu {:exe :ormolu})
+(set nvim.g.neoformat_fennel_fnlfmt {:exe :fnlfmt :args [:--fix] :replace 1})
 
 ;;; formatter selection
 
-(set nvim.g.neoformat_enabled_haskell ["ormolu"])
+(set nvim.g.neoformat_enabled_haskell [:ormolu])
+(set nvim.g.neoformat_enabled_fennel [:fnlfmt])

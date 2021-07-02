@@ -11,7 +11,8 @@
 # OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 # PERFORMANCE OF THIS SOFTWARE.
 
-{
+{ provideInputs, ... }:
+provideInputs {
   gnome = import ./gnome.nix;
   audio = import ./audio.nix;
   network = import ./network.nix;

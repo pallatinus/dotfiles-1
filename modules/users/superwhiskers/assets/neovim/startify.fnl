@@ -11,8 +11,7 @@
 ;;;; OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 ;;;; PERFORMANCE OF THIS SOFTWARE.
 
-(module config.startify
-  {autoload {nvim aniseed.nvim}}) 
+(module config.startify {autoload {nvim aniseed.nvim}})
 
 ;;; ensure that startify is loaded
 
@@ -20,12 +19,11 @@
 
 ;;; configure the start screen
 
-(set nvim.g.startify_lists [{:type "files"
-                             :header (nvim.fn.startify#pad ["most recently opened"])}
-                            {:type "dir"
-                             :header (nvim.fn.startify#pad [(..
-                                                              "most recently opened in "
-                                                              (nvim.fn.getcwd))])}
-                            {:type "bookmarks"
-                             :header (nvim.fn.startify#pad ["bookmarks"])}])
-(set nvim.g.startify_custom_header (nvim.fn.startify#pad ["neovim"]))
+(set nvim.g.startify_lists
+     [{:type :files :header (nvim.fn.startify#pad ["most recently opened"])}
+      {:type :dir
+       :header (nvim.fn.startify#pad [(.. "most recently opened in "
+                                          (nvim.fn.getcwd))])}
+      {:type :bookmarks :header (nvim.fn.startify#pad [:bookmarks])}])
+
+(set nvim.g.startify_custom_header (nvim.fn.startify#pad [:neovim]))

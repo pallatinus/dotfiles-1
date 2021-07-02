@@ -34,13 +34,18 @@
       vim-cool
       quick-scope
       sleuth
+      vim-pandoc
+      nvim-colorizer-lua
 
       # syntax plugins
-      vim-polyglot
+      nvim-treesitter
+      vim-pandoc-syntax
+      vim-nix
     ];
     extraConfig = ''
       let g:aniseed#env = { "module": "config.init" }
     '';
+    extraPackages = with pkgs; [ gcc ];
   };
 
   # provide the fennel configuration files to neovim

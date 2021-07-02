@@ -11,11 +11,10 @@
 ;;;; OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 ;;;; PERFORMANCE OF THIS SOFTWARE.
 
-(module config.nerdtree
-  {autoload {nvim aniseed.nvim}}) 
+(module config.nerdtree {autoload {nvim aniseed.nvim}})
 
 ;;; appearance
 
-(set nvim.g.NERDTreeMinimalUI 1)    ; remove the bookmarks label and help text
-(set nvim.g.NERDTreeDirArrowExpandable "→") 
+(set nvim.g.NERDTreeMinimalUI 1)
+(set nvim.g.NERDTreeDirArrowExpandable "→")
 (set nvim.g.NERDTreeDirArrowCollapsible "↓")

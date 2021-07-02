@@ -11,15 +11,14 @@
 ;;;; OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 ;;;; PERFORMANCE OF THIS SOFTWARE.
 
-(module config.display
-  {autoload {nvim aniseed.nvim}
-   require-macros [config.macros]})
+(module config.display {autoload {colorizer colorizer nvim aniseed.nvim}
+                        require-macros [config.macros]})
 
 ;;; theme
 
-(set nvim.o.background :dark)                         ; use the dark background
-(nvim.ex.set :termguicolors)                          ; enable 24-bit color in the terminal
-(nvim.ex.colorscheme "monokai_pro")                   ; use monokai pro as the theme
+(set nvim.o.background :dark)
+(nvim.ex.set :termguicolors)
+(nvim.ex.colorscheme :monokai_pro)
 
 ;;; terminal
 
@@ -42,16 +41,15 @@
 
 ;;; whitespace
 
-(set nvim.o.listchars "eol:↵,tab:··,space:·")    ; control how some characters are displayed
-(nvim.ex.set :list)                                   ; enable list mode
+(set nvim.o.listchars "eol:↵,tab:··,space:·")
+(nvim.ex.set :list)
 
 ;;; line numbers
 
-(nvim.ex.set :number)                                 ; line numbers are enabled by default
-(augroup :number_terminal
-         ;; disable line numbers upon entering a terminal
-         (autocmd :TermEnter :* (inline-foreign (nvim.ex.set :nonumber)))
-         (autocmd :TermLeave :* (inline-foreign (nvim.ex.set :number))))
+(nvim.ex.set :number)
+(augroup :number_terminal ;; disable line numbers upon entering a terminal
+         (autocmd :TermEnter "*" (inline-foreign (nvim.ex.set :nonumber)))
+         (autocmd :TermLeave "*" (inline-foreign (nvim.ex.set :number))))
 
 ;;; js highlighting
 
@@ -68,3 +66,11 @@
 (set nvim.g.haskell_enable_static_pointers 1)
 (set nvim.g.haskell_indent_disable 1)
 (set nvim.g.haskell_backpack 1)
+
+;;; displaying colors as the background of color codes
+
+(colorizer.setup)
+
+;;; pandoc
+
+(set nvim.g.pandoc#spell#enabled 0)

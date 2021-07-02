@@ -1,4 +1,4 @@
-# neovim.nix - system neovim install configuration
+# nyxt.nix - nyxt configuration loading
 #
 # Permission to use, copy, modify, and/or distribute this software for any
 # purpose with or without fee is hereby granted.
@@ -11,15 +11,13 @@
 # OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 # PERFORMANCE OF THIS SOFTWARE.
 
-{ neovim-nightly-overlay, ... }:
-{ pkgs, ... }: {
-  # add the nightly nixpkgs overlay
-  nixpkgs.overlays = [ neovim-nightly-overlay.overlay ];
+{ pkgs, lib, ... }: {
+  # add nyxt to the user packages list
+  home.packages = with pkgs; [ nyxt ];
 
-  # enable and make neovim the default editor
-  programs.neovim = {
-    package = pkgs.neovim-nightly;
-    enable = true;
-    defaultEditor = true;
-  };
+  # provide the lisp configuration files to nyxt
+  xdg.configFile = lib.mapAttrs' (name: _: {
+    name = "nyxt/" + name;
+    value.source = ./assets/nyxt + ("/" + name);
+  }) (builtins.readDir ./assets/nyxt);
 }

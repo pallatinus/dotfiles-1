@@ -1,4 +1,4 @@
-;;;; lightline.fnl - lightline configuration
+;;;; treesitter.fnl - nvim-treesitter configuration
 ;;;;
 ;;;; Permission to use, copy, modify, and/or distribute this software for any
 ;;;; purpose with or without fee is hereby granted.
@@ -11,16 +11,11 @@
 ;;;; OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 ;;;; PERFORMANCE OF THIS SOFTWARE.
 
-(module config.lightline {autoload {nvim aniseed.nvim}})
+(module config.treesitter
+        {autoload {nvim-treesitter nvim-treesitter.configs nvim aniseed.nvim}})
 
-;;; hide the stock statusline
+;;; setup nvim-treesitter
 
-(nvim.ex.set :noshowmode)
-
-;;; configuration
-
-(set nvim.g.lightline
-     {:colorscheme :monokai_pro
-      :separator {:left "" :right ""}
-      :subseparator {:left "" :right ""}
-      :active {:left [[:mode :paste] [:readonly :filename :modified]]}})
+(nvim-treesitter.setup {:ensure_installed :maintained
+                        :highlight {:enable true}
+                        :indent {:enable true}})

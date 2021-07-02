@@ -11,7 +11,33 @@
 # OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 # PERFORMANCE OF THIS SOFTWARE.
 
-{ pkgs, ... }: {
+{ pkgs, ... }:
+let
+  multimc-with-jdk11 = pkgs.multimc.overrideAttrs (oldAttrs: {
+    postPatch = oldAttrs.postPatch + ''
+      substituteInPlace api/logic/java/JavaUtils.cpp \
+        --replace 'scanJavaDir("/usr/java")' 'javas.append("${pkgs.jdk11}/lib/openjdk/bin/java")'
+    '';
+  });
+  fnlfmt = pkgs.stdenv.mkDerivation rec {
+    name = "fnlfmt";
+    version = "0.2.1";
+    patchPhase = ''
+      patchShebangs ./fennel
+    '';
+    installPhase = ''
+      mkdir -p $out/bin
+      cp fnlfmt $out/bin
+    '';
+    src = pkgs.fetchFromSourcehut {
+      owner = "~technomancy";
+      repo = "fnlfmt";
+      rev = version;
+      hash = "sha256-JIqeQhI3fFGrej2wbj6/367IZqWAFegySc2R8IDmvGE=";
+    };
+    buildInputs = [ pkgs.lua ];
+  };
+in {
   # user packages
   home.packages = with pkgs; [
     # networking
@@ -26,21 +52,24 @@
     nicotine-plus
 
     # gaming
-    multimc
+    multimc-with-jdk11
 
     # multimedia
     musikcube
+    gnome-podcasts # temporary?
 
     # productivity
     anki
     keepassxc
     gimp
     rx
+    blender
 
     # finance
     electrum
 
     # utilities
+    fnlfmt
     nixfmt
     xsv
     tokei

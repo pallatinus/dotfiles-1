@@ -15,6 +15,10 @@
   # use the xanmod kernel
   boot.kernelPackages = pkgs.linuxPackages_xanmod;
 
+  # make the device boot faster
+  systemd.services.systemd-udev-settle.enable = false;
+  systemd.services.NetworkManager-wait-online.enable = false;
+
   # use the ondemand cpu frequency governor
   powerManagement.cpuFreqGovernor = "ondemand";
 
@@ -36,13 +40,19 @@
     allowedTCPPorts = [ 57678 ];
   };
 
+  # disable bluetooth
+  hardware.bluetooth = {
+    enable = false;
+    powerOnBoot = false;
+  };
+
   # configure dnsmasq
-  services.dnsmasq = {
+  /*services.dnsmasq = {
     enable = true;
 
     # set the dns servers
     servers = [ "155.138.240.237" "2001:19f0:6401:b3d:5400:2ff:fe5a:fb9f" ];
-  };
+  };*/
 
   # enable the mullvad service
   services.mullvad-vpn.enable = true;

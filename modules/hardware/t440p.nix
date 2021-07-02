@@ -35,6 +35,11 @@
       ];
     };
     extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
+
+    # improve iwlwifi performance
+    extraModprobeConfig = ''
+        options iwlwifi 11n_disable=8
+    '';
   };
 
   # enable the trackpoint

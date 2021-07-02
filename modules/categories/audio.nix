@@ -11,7 +11,7 @@
 # OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 # PERFORMANCE OF THIS SOFTWARE.
 
-{
+_: {
   # disable pulseaudio (enabled by gnome)
   hardware.pulseaudio.enable = false;
 

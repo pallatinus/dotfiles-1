@@ -11,20 +11,16 @@
 ;;;; OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 ;;;; PERFORMANCE OF THIS SOFTWARE.
 
-(module config.mapping
-  {autoload {nvim aniseed.nvim}})
+(module config.mapping {autoload {nvim aniseed.nvim}})
 
-(defn- noremap [mode from to]
-  "Create a mapping without recursive mapping"
-  (nvim.set_keymap mode from to {:noremap true}))
+(defn- noremap [mode from to] "Create a mapping without recursive mapping"
+       (nvim.set_keymap mode from to {:noremap true}))
 
-(defn- map [mode from to]
-  "Create a mapping"
-  (nvim.set_keymap mode from to {}))
+(defn- map [mode from to] "Create a mapping" (nvim.set_keymap mode from to {}))
 
 ;;; allow <Esc> to be used to exit terminal mode
 
-(noremap :t :<Esc> :<C-\><C-n>)
+(noremap :t :<Esc> "<C-\\><C-n>")
 
 ;;; improve switching between buffers
 
@@ -39,6 +35,6 @@
 
 ;;; incsearch mappings
 
-(map :n :/ "<Plug>(incsearch-easymotion-/)")
-(map :n :? "<Plug>(incsearch-easymotion-?)")
+(map :n "/" "<Plug>(incsearch-easymotion-/)")
+(map :n "?" "<Plug>(incsearch-easymotion-?)")
 (map :n :g/ "<Plug>(incsearch-easymotion-stay)")

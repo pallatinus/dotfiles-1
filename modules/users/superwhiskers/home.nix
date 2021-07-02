@@ -20,6 +20,7 @@
     ./packages.nix
     ./neovim.nix
     ./gnome.nix
+    ./nyxt.nix
   ];
 
   home = {

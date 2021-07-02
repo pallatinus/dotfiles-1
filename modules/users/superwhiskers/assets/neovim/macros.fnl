@@ -12,30 +12,26 @@
 ;;;; PERFORMANCE OF THIS SOFTWARE.
 
 (fn augroup [name ...]
-   "Shorthand for defining an autogroup"
-   `(do
-       (nvim.ex.augroup ,(tostring name))
-       (nvim.ex.autocmd_)
-       ,(list `do ...)
-       (nvim.ex.augroup :END)))
+  "Shorthand for defining an autogroup"
+  `(do
+     (nvim.ex.augroup ,(tostring name))
+     (nvim.ex.autocmd_)
+     ,(list `do ...)
+     (nvim.ex.augroup :END)))
 
 (fn autocmd [...]
-   "Shorthand for nvim.ex.autocmd"
+  "Shorthand for nvim.ex.autocmd"
   `(nvim.ex.autocmd ,...))
 
 (fn foreign [name]
-   "Insert a call to a fennel function from vim"
-   `(.. "lua require('" *module-name* "')['" ,(tostring name) "']()"))
+  "Insert a call to a fennel function from vim"
+  `(.. "lua require('" *module-name* "')['" ,(tostring name) "']()"))
 
 (fn inline-foreign [...]
-   "Wrap the enclosed S-expressions in a function and insert a call to them from vim"
-   (let [fun (gensym)]
-      `(do
-          (defn ,fun []
-             ,(list `do ...))
-          (.. "lua require('" *module-name* "')['" ,(tostring fun) "']()"))))
+  "Wrap the enclosed S-expressions in a function and insert a call to them from vim"
+  (let [fun (gensym)]
+    `(do
+       (defn ,fun [] ,(list `do ...))
+       (.. "lua require('" *module-name* "')['" ,(tostring fun) "']()"))))
 
-{:augroup augroup
- :autocmd autocmd
- :foreign foreign
- :inline-foreign inline-foreign}
+{: augroup : autocmd : foreign : inline-foreign}

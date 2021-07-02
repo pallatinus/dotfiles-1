@@ -11,9 +11,8 @@
 ;;;; OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 ;;;; PERFORMANCE OF THIS SOFTWARE.
 
-(module config.quick-scope
-  {autoload {nvim aniseed.nvim}})
+(module config.quick-scope {autoload {nvim aniseed.nvim}})
 
-;;; blacklist the terminal and no-file bufer kinds
+;;; blacklist the terminal and no-file buffer kinds
 
-(set nvim.g.qs_buftype_blacklist ["terminal" "nofile"])
+(set nvim.g.qs_buftype_blacklist [:terminal :nofile])

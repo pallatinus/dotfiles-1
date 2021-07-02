@@ -11,10 +11,11 @@
 # OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 # PERFORMANCE OF THIS SOFTWARE.
 
+_:
 { pkgs, ... }: {
   # enable the cups printing service
   services.printing = {
-  	enable = true;
-	  drivers = with pkgs; [ hplip ];
+    enable = true;
+    drivers = with pkgs; [ hplip ];
   };
 }
