@@ -16,7 +16,6 @@
 
 (require :config.display)
 (require :config.mapping)
-(require :config.nerdtree)
 (require :config.lightline)
 (require :config.startify)
 (require :config.neoformat)

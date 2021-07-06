@@ -12,11 +12,19 @@
 ;;;; PERFORMANCE OF THIS SOFTWARE.
 
 (module config.treesitter
-        {autoload {nvim-treesitter nvim-treesitter.configs nvim aniseed.nvim}})
+        {autoload {treesitter nvim-treesitter.configs
+                   treesitter-context treesitter-context.config
+                   nvim aniseed.nvim}})
 
 ;;; setup nvim-treesitter
 
-(nvim-treesitter.setup {:ensure_installed :maintained
-                        :highlight {:enable true}
-                        :indent {:enable true}
-                        :incremental_selection {:enable true}})
+(treesitter.setup {:ensure_installed :maintained
+                   :highlight {:enable true}
+                   :indent {:enable true}
+                   :incremental_selection {:enable true}
+                   :refactor {:smart_rename {:enable true}
+                              :navigation {:enable true}}})
+
+;;; enable nvim-treesitter-context
+
+(treesitter-context.setup {:enable true})

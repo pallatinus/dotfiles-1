@@ -29,10 +29,6 @@
 (noremap :n :<C-h> :<C-w>h)
 (noremap :n :<C-l> :<C-w>l)
 
-;;; let <C-n> be used to open nerdtree
-
-(noremap :n :<C-n> ":NERDTreeToggle<CR>")
-
 ;;; incsearch mappings
 
 (map :n "/" "<Plug>(incsearch-easymotion-/)")

@@ -30,12 +30,16 @@
       easymotion
       incsearch-vim
       incsearch-easymotion-vim
-      nerdtree
       vim-cool
       quick-scope
       sleuth
       vim-pandoc
       nvim-colorizer-lua
+      nvim-treesitter-context
+      nvim-treesitter-refactor
+      vim-vinegar
+      vim-dirvish
+      vim-eunuch
 
       # syntax plugins
       nvim-treesitter
