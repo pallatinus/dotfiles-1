@@ -87,6 +87,8 @@
 
     # touchpad settings
     "org/gnome/desktop/peripherals/touchpad" = {
+      click-method = "areas";
+      natural-scroll = false;
       tap-to-click = false;
       two-finger-scrolling-enabled = true;
     };
@@ -96,6 +98,13 @@
 
     # make the legacy titlebar font be similar to the rest
     "org/gnome/desktop/wm/preferences".titlebar-font = "Inter Bold 11";
+
+    # disable notifications on the lockscreen
+    "org/gnome/desktop/notifications".show-in-lock-screen = false;
+
+    # don't suspend when plugged in
+    "org/gnome/settings-daemon/plugins/power".sleep-inactive-ac-type =
+      "nothing";
 
     # disable the gnome software search provider
     #
