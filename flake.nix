@@ -15,10 +15,8 @@
   description = "arbitrarily structured system configuration database";
 
   inputs = {
-    # currently broken
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs.url =
-      "github:NixOS/nixpkgs/28118baccee4b5a8dd6536e51ec4d6655cec8fca";
+      "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";

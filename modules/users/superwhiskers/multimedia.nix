@@ -30,7 +30,7 @@
     enable = true;
     package = (pkgs.beets.overrideAttrs (oldAttrs: {
       propagatedBuildInputs = with pkgs.python39Packages;
-        [ pillow-simd ] ++ oldAttrs.propagatedBuildInputs;
+        [ pillow ] ++ oldAttrs.propagatedBuildInputs;
     })).override { pythonPackages = pkgs.python39Packages; };
     settings = {
       directory = config.xdg.userDirs.music;

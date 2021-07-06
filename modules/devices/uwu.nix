@@ -47,12 +47,13 @@
   };
 
   # configure dnsmasq
-  /*services.dnsmasq = {
-    enable = true;
+  /* services.dnsmasq = {
+       enable = true;
 
-    # set the dns servers
-    servers = [ "155.138.240.237" "2001:19f0:6401:b3d:5400:2ff:fe5a:fb9f" ];
-  };*/
+       # set the dns servers
+       servers = [ "155.138.240.237" "2001:19f0:6401:b3d:5400:2ff:fe5a:fb9f" ];
+     };
+  */
 
   # enable the mullvad service
   services.mullvad-vpn.enable = true;
@@ -85,16 +86,22 @@
   # enable flatpak
   services.flatpak.enable = true;
 
+  # load the encrypted root partition
+  boot.initrd.luks.devices."cryptroot" = {
+    device = "/dev/disk/by-uuid/09cfc417-8ba3-4c47-8fa0-73e0e96ee273";
+    allowDiscards = true;
+  };
+
   # configure partitioning
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by-uuid/7de63251-d690-4e0b-b006-09c63e451680";
+      device = "/dev/disk/by-uuid/0e9b6fe0-1844-4b1a-abf6-6fd49bb47db5";
       fsType = "ext4";
       options = [ "noatime" ];
     };
 
     "/boot" = {
-      device = "/dev/disk/by-uuid/0313-94DC";
+      device = "/dev/disk/by-uuid/4C3B-4FDA";
       fsType = "vfat";
       options = [ "noatime" ];
     };

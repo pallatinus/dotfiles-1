@@ -32,13 +32,15 @@
         "sd_mod"
         "sr_mod"
         "rtsx_pci_sdmmc"
+        "aesni_intel"
+        "cryptd"
       ];
     };
     extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
 
     # improve iwlwifi performance
     extraModprobeConfig = ''
-        options iwlwifi 11n_disable=8
+      options iwlwifi 11n_disable=8
     '';
   };
 
