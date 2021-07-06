@@ -1,4 +1,4 @@
-# default.nix - root categories directory attribute set
+# boot.nix - boot configuration options
 #
 # Permission to use, copy, modify, and/or distribute this software for any
 # purpose with or without fee is hereby granted.
@@ -11,17 +11,7 @@
 # OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 # PERFORMANCE OF THIS SOFTWARE.
 
-{ provideInputs, ... }:
-provideInputs {
-  gnome = import ./gnome.nix;
-  audio = import ./audio.nix;
-  network = import ./network.nix;
-  fonts = import ./fonts.nix;
-  nix = import ./nix.nix;
-  home-manager = import ./home-manager.nix;
-  internationalization = import ./internationalization.nix;
-  gnupg = import ./gnupg.nix;
-  printing = import ./printing.nix;
-  neovim = import ./neovim.nix;
-  boot = import ./boot.nix;
+_: {
+  # enable tmpfs on /tmp
+  boot.tmpOnTmpfs = true;
 }
