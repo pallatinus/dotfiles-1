@@ -55,7 +55,6 @@
             nix
             printing
             boot
-            # virtualization
           ]) ++ (with modules.hardware; [ t440p ])
           ++ (with modules.devices; [ uwu ]) ++ [ home-manager-module ];
       };

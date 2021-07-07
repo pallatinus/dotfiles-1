@@ -1,13 +1,19 @@
 # dotfiles
 
-my nixos system configuration, as a flake
+my dotfiles
 
-todo: add more here describing it all
+## layout
 
-## general todo
+- modules/ - configuration "modules"---groups of nixpkgs modules that are independent of one
+another and as such, can be mixed and matched freely
+	- categories/ - abstract groups of system configuration that isn't specific to any
+	device
+	- devices/ - system configuration used on specific hosts
+	- hardware/ - system configuration related to specific configurations of hardware
+	- users/ - configuration for specific user accounts
 
-> inb4 more flakes
+## todo
 
-- make it possible to configure home-manager profiles in the same manner the entire system is (such as through removing graphical elements)
-- pass down flake inputs in the `modules` flake to the modules
-- handle passwords declaratively (somehow)
+- make it possible to configure home-manager profiles in the same manner the entire system is (such
+as through removing graphical elements)
+- [handle passwords declaratively](https://github.com/Mic92/sops-nix)
