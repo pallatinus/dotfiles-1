@@ -88,7 +88,7 @@
 
   # load the encrypted root partition
   boot.initrd.luks.devices."cryptroot" = {
-    device = "/dev/disk/by-uuid/09cfc417-8ba3-4c47-8fa0-73e0e96ee273";
+    device = "/dev/disk/by-partuuid/4da2c499-f09e-9e4e-88a3-98760254bd33";
     allowDiscards = true;
   };
 
@@ -101,7 +101,7 @@
     };
 
     "/boot" = {
-      device = "/dev/disk/by-uuid/4C3B-4FDA";
+      device = "/dev/disk/by-partuuid/2db197a4-9dac-9e42-8bbf-2479be6f73e9";
       fsType = "vfat";
       options = [ "noatime" ];
     };
