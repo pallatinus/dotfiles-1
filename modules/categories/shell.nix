@@ -1,4 +1,4 @@
-# nix.nix - configuration relating to the nix package manager
+# shell.nix - configuration related to interactive shells, consoles, etc...
 #
 # Permission to use, copy, modify, and/or distribute this software for any
 # purpose with or without fee is hereby granted.
@@ -11,21 +11,7 @@
 # OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 # PERFORMANCE OF THIS SOFTWARE.
 
-_:
-{ pkgs, lib, ... }: {
-  nix = {
-    # use the unstable version of nix
-    package = pkgs.nixUnstable;
-
-    # use cache v2
-    # https://www.notion.so/NEW-Try-the-beta-cache-5263cdd5200b4e328baf41f904e6f5ee
-    binaryCaches = [ "https://aseipp-nix-cache.freetls.fastly.net" ];
-
-    # enable the flake feature
-    extraOptions = ''
-      experimental-features = nix-command flakes
-      keep-derivations = true
-      keep-outputs = true
-    '';
-  };
+_: {
+  # disable command-not-found system-wide
+  programs.command-not-found.enable = false;
 }

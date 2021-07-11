@@ -16,7 +16,7 @@
 
   inputs = {
     nixpkgs.url =
-      "github:NixOS/nixpkgs/nixos-unstable";
+      "github:NixOS/nixpkgs/nixos-unstable-small";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -55,6 +55,7 @@
             nix
             printing
             boot
+            shell
           ]) ++ (with modules.hardware; [ t440p ])
           ++ (with modules.devices; [ uwu ]) ++ [ home-manager-module ];
       };

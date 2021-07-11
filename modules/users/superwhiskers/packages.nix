@@ -35,7 +35,7 @@ let
       rev = version;
       hash = "sha256-JIqeQhI3fFGrej2wbj6/367IZqWAFegySc2R8IDmvGE=";
     };
-    buildInputs = [ pkgs.lua ];
+    buildInputs = with pkgs; [ lua ];
   };
 in {
   # user packages

@@ -24,4 +24,5 @@ provideInputs {
   printing = import ./printing.nix;
   neovim = import ./neovim.nix;
   boot = import ./boot.nix;
+  shell = import ./shell.nix;
 }
