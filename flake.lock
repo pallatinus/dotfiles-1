@@ -18,11 +18,11 @@
     },
     "flake-utils": {
       "locked": {
-        "lastModified": 1610051610,
-        "narHash": "sha256-U9rPz/usA1/Aohhk7Cmc2gBrEEKRzcW4nwPWMPwja4Y=",
+        "lastModified": 1623875721,
+        "narHash": "sha256-A8BU7bjS5GirpAUv4QA+QnJ4CceLHkcXdRp4xITDB0s=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "3982c9903e93927c2164caa727cd3f6a0e6d14cc",
+        "rev": "f7e004a55b120c02ecb6219596820fcd32ca8772",
         "type": "github"
       },
       "original": {
@@ -38,11 +38,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1625909913,
-        "narHash": "sha256-ZP3RCGYwPDu4I5rwLYER2/d4aHFxiMTQ5Ioc89WRTow=",
+        "lastModified": 1626036366,
+        "narHash": "sha256-r/RfKxXzAK6UDnQ2t2DhVi6kcDKMQGYnusdejQk/Zes=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "9ed7a73ae23f0d905bd098c6ce71c50289d37928",
+        "rev": "3ab254aff4ea57c4c879a0410f1b3ceadca15b7a",
         "type": "github"
       },
       "original": {
@@ -61,7 +61,7 @@
         ]
       },
       "locked": {
-        "narHash": "sha256-lddh6hFPurEd9ugPYFNZTa/Sw371cAKY1ZlNF5P2Zeg=",
+        "narHash": "sha256-b6yMEFsXrUAPpPGwPoBtEoW8URS2Cq8N6tCyxbAp+C4=",
         "path": "./modules",
         "type": "path"
       },
@@ -79,11 +79,11 @@
       },
       "locked": {
         "dir": "contrib",
-        "lastModified": 1625855768,
-        "narHash": "sha256-eMfaWs1Lmj1x7EtejWysqh8kfqWwDtU94/gWRuiuzgI=",
+        "lastModified": 1625977957,
+        "narHash": "sha256-ErhoKxwQ8h9QLc5oASfKrrH6QqbsliN7N8kn+CTgZCU=",
         "owner": "neovim",
         "repo": "neovim",
-        "rev": "e43dbfdd05d09e28ee0468f1cd1808f859807606",
+        "rev": "79fe9dedcfede1d2038b47a21f21a995051deaa2",
         "type": "github"
       },
       "original": {
@@ -102,11 +102,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1625904691,
-        "narHash": "sha256-R+HcHxfAsG3JxdeXvQUjDg6i4VJxjh39SPEGwaLMWi4=",
+        "lastModified": 1625991077,
+        "narHash": "sha256-n3Eov2S+5TmN5K4ptXkdIJGdDD6wdovs+XaQNrVBy64=",
         "owner": "nix-community",
         "repo": "neovim-nightly-overlay",
-        "rev": "c2a8577b755101ba3cd5d8b20a1a46f231b76a11",
+        "rev": "7ded2a7207bef8d3b55126a76de285907efbaad8",
         "type": "github"
       },
       "original": {

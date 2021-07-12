@@ -37,7 +37,7 @@
     checkReversePath = false;
 
     # expose the port used for slsk
-    allowedTCPPorts = [ 57678 ];
+    allowedTCPPorts = [ 59815 ];
   };
 
   # disable bluetooth
