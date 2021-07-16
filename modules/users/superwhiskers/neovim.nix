@@ -15,41 +15,41 @@
   # configure the neovim editor
   programs.neovim = {
     enable = true;
-    plugins = with pkgs.vimPlugins; [
+    plugins = lib.attrVals [
       # colorscheme
-      vim-monokai-pro
+      "vim-monokai-pro"
 
       # used for writing the configuration in a lisp
-      aniseed
+      "aniseed"
 
       # utility plugins
-      neoformat
-      lightline-vim
-      vim-startify
-      direnv-vim
-      easymotion
-      incsearch-vim
-      incsearch-easymotion-vim
-      vim-cool
-      quick-scope
-      sleuth
-      vim-pandoc
-      nvim-colorizer-lua
-      nvim-treesitter-context
-      nvim-treesitter-refactor
-      vim-vinegar
-      vim-dirvish
-      vim-eunuch
+      "neoformat"
+      "lightline-vim"
+      "vim-startify"
+      "direnv-vim"
+      "easymotion"
+      "incsearch-vim"
+      "incsearch-easymotion-vim"
+      "vim-cool"
+      "quick-scope"
+      "sleuth"
+      "vim-pandoc"
+      "nvim-colorizer-lua"
+      "nvim-treesitter-refactor"
+      "vim-vinegar"
+      "vim-dirvish"
+      "vim-eunuch"
 
       # syntax plugins
-      nvim-treesitter
-      vim-pandoc-syntax
-      vim-nix
-    ];
+      "nvim-treesitter"
+      "vim-pandoc-syntax"
+      "vim-nix"
+      "zig-vim"
+    ] pkgs.vimPlugins;
     extraConfig = ''
       let g:aniseed#env = { "module": "config.init" }
     '';
-    extraPackages = with pkgs; [ gcc ];
+    extraPackages = lib.attrVals [ "gcc" ] pkgs;
   };
 
   # provide the fennel configuration files to neovim

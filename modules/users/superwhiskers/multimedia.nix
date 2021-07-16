@@ -11,7 +11,7 @@
 # OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 # PERFORMANCE OF THIS SOFTWARE.
 
-{ config, pkgs, ... }: {
+{ config, pkgs, lib, ... }: {
   # enable the mpv media player
   programs.mpv = {
     enable = true;
@@ -22,15 +22,15 @@
       ytdl-raw-options = "write-auto-sub=,write-sub=,sub-lang=en";
       vo = "gpu";
     };
-    scripts = with pkgs.mpvScripts; [ sponsorblock ];
+    scripts = lib.attrVals [ "sponsorblock" ] pkgs.mpvScripts;
   };
 
   # enable the beets music library manager
   programs.beets = {
     enable = true;
     package = (pkgs.beets.overrideAttrs (oldAttrs: {
-      propagatedBuildInputs = with pkgs.python39Packages;
-        [ pillow ] ++ oldAttrs.propagatedBuildInputs;
+      propagatedBuildInputs = lib.attrVals [ "pillow" ] pkgs.python39Packages
+        ++ oldAttrs.propagatedBuildInputs;
     })).override { pythonPackages = pkgs.python39Packages; };
     settings = {
       directory = config.xdg.userDirs.music;

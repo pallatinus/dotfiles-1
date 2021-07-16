@@ -11,7 +11,7 @@
 # OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 # PERFORMANCE OF THIS SOFTWARE.
 
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 let
   multimc-with-jdk11 = pkgs.multimc.overrideAttrs (oldAttrs: {
     postPatch = oldAttrs.postPatch + ''
@@ -35,57 +35,35 @@ let
       rev = version;
       hash = "sha256-JIqeQhI3fFGrej2wbj6/367IZqWAFegySc2R8IDmvGE=";
     };
-    buildInputs = with pkgs; [ lua ];
+    buildInputs = lib.attrVals [ "lua" ] pkgs;
   };
 in {
   # user packages
-  home.packages = with pkgs; [
-    # networking
-    ungoogled-chromium
-    tor-browser-bundle-bin
-    mullvad-vpn
+  home.packages = builtins.attrValues {
+    inherit (pkgs)
+      ungoogled-chromium tor-browser-bundle-bin mullvad-vpn # networking
 
-    # communication
-    tdesktop
-    weechat
-    element-desktop
-    nicotine-plus
+      tdesktop weechat element-desktop nicotine-plus # communication
 
+      musikcube # multimedia
+
+      anki keepassxc gimp rx blender # productivity
+
+      electrum # finance
+
+      nixfmt xsv tokei lftp htop ripgrep nnn pavucontrol mosh; # utilities
+
+    inherit (pkgs.gnome)
+      gnome-tweak-tool gnome-shell-extensions dconf-editor; # utilities
+  } ++ [
     # gaming
     multimc-with-jdk11
 
-    # multimedia
-    musikcube
-
-    # productivity
-    anki
-    keepassxc
-    gimp
-    rx
-    blender
-
-    # finance
-    electrum
-
     # utilities
     fnlfmt
-    nixfmt
-    xsv
-    tokei
-    lftp
-    # TODO: fetch using flake from https://github.com/anna328p/tilp-nix/archive/master.tar.gz
-    # tilp
-    htop
-    gnome3.gnome-tweak-tool
-    gnome3.gnome-shell-extensions
-    ripgrep
-    nnn
-    pavucontrol
-    mosh
-    gnome.dconf-editor
 
-    # misc
-    jdk
+    # TODO: fetch using flake from https://github.com/anna328p/tilp-nix/archive/master.tar.gz
+    # "tilp"
   ];
 
   # enable fontconfig

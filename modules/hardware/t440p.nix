@@ -11,7 +11,7 @@
 # OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 # PERFORMANCE OF THIS SOFTWARE.
 
-{ config, pkgs, ... }: {
+{ config, pkgs, lib, ... }: {
   # kernel-level configuration
   boot = {
     # bootloader configuration
@@ -36,7 +36,8 @@
         "cryptd"
       ];
     };
-    extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
+    extraModulePackages =
+      lib.attrVals [ "acpi_call" ] config.boot.kernelPackages;
 
     # improve iwlwifi performance
     extraModprobeConfig = ''

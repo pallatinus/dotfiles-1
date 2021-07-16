@@ -12,10 +12,10 @@
 # PERFORMANCE OF THIS SOFTWARE.
 
 _:
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
   # enable the cups printing service
   services.printing = {
     enable = true;
-    drivers = with pkgs; [ hplip ];
+    drivers = lib.attrVals [ "hplip" ] pkgs;
   };
 }

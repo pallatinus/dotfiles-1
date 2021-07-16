@@ -30,6 +30,10 @@
 (set nvim.o.modelines 0)
 (nvim.ex.set :wrap)
 
+;;; set filetype for zig files
+(autocmd "BufRead,BufNewFile" :*.zig (inline-foreign (set nvim.bo.filetype :zig)))
+(autocmd "BufRead,BufNewFile" :*.zir (inline-foreign (set nvim.bo.filetype :zir)))
+
 ;;; textwidth
 
 (augroup :formatted_textwidth ;; set textwidth to 99 in formatted text files

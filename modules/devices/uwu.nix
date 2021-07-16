@@ -11,7 +11,7 @@
 # OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 # PERFORMANCE OF THIS SOFTWARE.
 
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
   # use the xanmod kernel
   boot.kernelPackages = pkgs.linuxPackages_xanmod;
 
@@ -59,10 +59,8 @@
   services.mullvad-vpn.enable = true;
 
   # make the numworks and android udev rules available
-  services.udev.packages = with pkgs; [
-    numworks-udev-rules
-    android-udev-rules
-  ];
+  services.udev.packages =
+    lib.attrVals [ "numworks-udev-rules" "android-udev-rules" ] pkgs;
 
   # enable trim
   services.fstrim.enable = true;

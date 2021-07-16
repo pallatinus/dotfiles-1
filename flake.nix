@@ -15,14 +15,14 @@
   description = "arbitrarily structured system configuration database";
 
   inputs = {
-    nixpkgs.url =
-      "github:NixOS/nixpkgs/nixos-unstable-small";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     neovim-nightly-overlay = {
-      url = "github:nix-community/neovim-nightly-overlay/7ded2a7207bef8d3b55126a76de285907efbaad8";
+      url =
+        "github:nix-community/neovim-nightly-overlay/7ded2a7207bef8d3b55126a76de285907efbaad8";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     modules = {
@@ -42,22 +42,14 @@
     in utils.lib.generateConfiguration inputs {
       uwu = {
         system = "x86_64-linux";
-        modules = (with modules.users; [ superwhiskers ])
-          ++ (with modules.categories; [
-            audio
-            fonts
-            gnome
-            gnupg
-            home-manager
-            internationalization
-            neovim
-            network
-            nix
-            printing
-            boot
-            shell
-          ]) ++ (with modules.hardware; [ t440p ])
-          ++ (with modules.devices; [ uwu ]) ++ [ home-manager-module ];
+        modules = builtins.attrValues {
+          inherit (modules.users) superwhiskers;
+          inherit (modules.categories)
+            audio fonts gnome gnupg home-manager internationalization neovim
+            network nix printing boot shell;
+          inherit (modules.hardware) t440p;
+          inherit (modules.devices) uwu;
+        } ++ [ home-manager-module ];
       };
     };
 }

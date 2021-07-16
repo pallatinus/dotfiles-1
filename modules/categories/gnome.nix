@@ -35,33 +35,12 @@ _:
   services.geoclue2.enable = false;
 
   # remove a bunch of packages included by default
-  environment.gnome.excludePackages = with pkgs.gnome3; [
-    baobab
-    cheese
-    eog
-    epiphany
-    gedit
-    gnome-calculator
-    gnome-calendar
-    gnome-characters
-    gnome-clocks
-    gnome-contacts
-    gnome-font-viewer
-    gnome-logs
-    gnome-maps
-    gnome-music
-    pkgs.gnome-photos
-    gnome-screenshot
-    gnome-system-monitor
-    gnome-weather
-    pkgs.gnome-connections
-    totem
-    yelp
-    evince
-    file-roller
-    geary
-    gnome-disk-utility
-    seahorse
-    sushi
-  ];
+  environment.gnome.excludePackages = builtins.attrValues {
+    inherit (pkgs.gnome)
+      baobab cheese eog epiphany gedit gnome-calculator gnome-calendar
+      gnome-characters gnome-clocks gnome-contacts gnome-font-viewer gnome-logs
+      gnome-maps gnome-music gnome-screenshot gnome-system-monitor gnome-weather
+      totem yelp evince file-roller geary gnome-disk-utility seahorse sushi;
+    inherit (pkgs) gnome-photos gnome-connections;
+  };
 }

@@ -21,6 +21,4 @@ let
   };
 
   hostToSystem = _: host: nixpkgs.lib.nixosSystem host;
-in {
-  nixosConfigurations = builtins.mapAttrs hostToSystem hosts;
-}
+in { nixosConfigurations = builtins.mapAttrs hostToSystem hosts; }

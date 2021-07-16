@@ -13,7 +13,7 @@
 
 { pkgs, lib, ... }: {
   # add nyxt to the user packages list
-  home.packages = with pkgs; [ nyxt ];
+  home.packages = lib.attrVals [ "nyxt" ] pkgs;
 
   # provide the lisp configuration files to nyxt
   xdg.configFile = lib.mapAttrs' (name: _: {

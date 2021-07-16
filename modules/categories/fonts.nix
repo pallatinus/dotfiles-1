@@ -12,16 +12,16 @@
 # PERFORMANCE OF THIS SOFTWARE.
 
 _:
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
   # configure the graphical fonts
   fonts = {
-    fonts = with pkgs; [
-      go-font
-      inter
-      noto-fonts
-      noto-fonts-cjk
-      noto-fonts-emoji
-    ];
+    fonts = lib.attrVals [
+      "go-font"
+      "inter"
+      "noto-fonts"
+      "noto-fonts-cjk"
+      "noto-fonts-emoji"
+    ] pkgs;
     fontconfig.defaultFonts = {
       emoji = [ "Noto Color Emoji" ];
       monospace = [
