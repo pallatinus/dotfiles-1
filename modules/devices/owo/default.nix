@@ -100,4 +100,7 @@
     fsType = "ext4";
     options = [ "noatime" ];
   };
+
+  # enable zram
+  zramSwap.enable = true;
 }

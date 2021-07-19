@@ -24,7 +24,7 @@ _: {
         firmwareConfig = ''
           start_x=1
         '';
-      }
+      };
     };
 
     # kernel module configuration
