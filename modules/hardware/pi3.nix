@@ -1,4 +1,4 @@
-# home.nix - the home-manager root configuration file
+# pi3.nix - raspberry pi3-specific configuration
 #
 # Permission to use, copy, modify, and/or distribute this software for any
 # purpose with or without fee is hereby granted.
@@ -11,23 +11,27 @@
 # OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 # PERFORMANCE OF THIS SOFTWARE.
 
-{
-  imports = [
-    ./directories.nix
-    ./graphical.nix
-    ./shell.nix
-    ./multimedia.nix
-    ./packages.nix
-    ./neovim.nix
-    ./gnome.nix
-    ./nyxt.nix
-  ];
+_: {
+  # kernel configuration
+  boot = {
+    # bootloader configuration
+    loader = {
+      grub.enable = false;
+      raspberryPi = {
+        enable = true;
+        version = 3;
+        uboot.enable = true;
+        firmwareConfig = ''
+          start_x=1
+        '';
+      }
+    };
 
-  home = {
-    username = "superwhiskers";
-    homeDirectory = "/home/superwhiskers";
-
-    # link in the manpages and documentation outputs from installed packages
-    extraOutputsToInstall = [ "man" "doc" ];
+    # kernel module configuration
+    # (we only ever use the mainline kernel)
+    initrd.kernelModules = [ "vc4" "bcm2835_dma" "i2c_bcm2835" ];
   };
+
+  # allow redistributable firmware to be used
+  hardware.enableRedistributableFirmware = true;
 }

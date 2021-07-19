@@ -13,4 +13,5 @@
 
 _: {
   t440p = import ./t440p.nix;
+  pi3 = import ./pi3.nix;
 }

@@ -12,6 +12,13 @@
 # PERFORMANCE OF THIS SOFTWARE.
 
 { pkgs, lib, ... }: {
+  # gnome applications
+  home.packages = lib.attrVals [
+    "gnome-tweak-tool"
+    "gnome-shell-extensions"
+    "dconf-editor"
+  ] pkgs.gnome;
+
   # gtk configuration
   gtk = {
     enable = true;

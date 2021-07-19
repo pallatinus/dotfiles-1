@@ -27,5 +27,19 @@ _:
       keep-derivations = true
       keep-outputs = true
     '';
+
+    # enable garbage collection once a week
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 2d";
+    };
+
+    # enable automatic store optimization 
+    optimise = {
+      automatic = true;
+      dates = [ "daily" ];
+    };
   };
+
 }

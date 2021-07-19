@@ -27,5 +27,6 @@ utils.lib.createUser {
     neovim = ./neovim.nix;
     gnome = ./gnome.nix;
     nyxt = ./nyxt.nix;
+    headless = ./headless.nix;
   };
 }

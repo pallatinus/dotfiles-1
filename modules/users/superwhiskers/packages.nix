@@ -19,24 +19,6 @@ let
         --replace 'scanJavaDir("/usr/java")' 'javas.append("${pkgs.jdk11}/lib/openjdk/bin/java")'
     '';
   });
-  fnlfmt = pkgs.stdenv.mkDerivation rec {
-    name = "fnlfmt";
-    version = "0.2.1";
-    patchPhase = ''
-      patchShebangs ./fennel
-    '';
-    installPhase = ''
-      mkdir -p $out/bin
-      cp fnlfmt $out/bin
-    '';
-    src = pkgs.fetchFromSourcehut {
-      owner = "~technomancy";
-      repo = "fnlfmt";
-      rev = version;
-      hash = "sha256-JIqeQhI3fFGrej2wbj6/367IZqWAFegySc2R8IDmvGE=";
-    };
-    buildInputs = lib.attrVals [ "lua" ] pkgs;
-  };
 in {
   # user packages
   home.packages = builtins.attrValues {
@@ -51,16 +33,10 @@ in {
 
       electrum # finance
 
-      nixfmt xsv tokei lftp htop ripgrep nnn pavucontrol mosh; # utilities
-
-    inherit (pkgs.gnome)
-      gnome-tweak-tool gnome-shell-extensions dconf-editor; # utilities
+      tokei pavucontrol; # utilities
   } ++ [
     # gaming
     multimc-with-jdk11
-
-    # utilities
-    fnlfmt
 
     # TODO: fetch using flake from https://github.com/anna328p/tilp-nix/archive/master.tar.gz
     # "tilp"

@@ -11,7 +11,7 @@
 # OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 # PERFORMANCE OF THIS SOFTWARE.
 
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
   # set the xorg dpi
   xresources.properties = { "Xft.dpi" = "75"; };
 

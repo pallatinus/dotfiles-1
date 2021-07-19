@@ -13,4 +13,5 @@
 
 _: {
   uwu = import ./uwu.nix;
+  owo = import ./owo;
 }

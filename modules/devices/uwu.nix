@@ -65,19 +65,6 @@
   # enable trim
   services.fstrim.enable = true;
 
-  # enable garbage collection once a week
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 2d";
-  };
-
-  # enable automatic store optimization 
-  nix.optimise = {
-    automatic = true;
-    dates = [ "daily" ];
-  };
-
   # disable the nvidia gpu
   hardware.nvidiaOptimus.disable = true;
 

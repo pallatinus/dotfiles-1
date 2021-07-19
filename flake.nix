@@ -52,7 +52,22 @@
         } ++ [
           (modules.users.superwhiskers.fromUserModules (builtins.attrValues {
             inherit (modules.users.superwhiskers.modules)
-              directories graphical shell multimedia packages neovim gnome nyxt;
+              directories graphical shell multimedia packages neovim gnome nyxt
+              headless;
+          }))
+        ] ++ [ home-manager-module ];
+      };
+      owo = {
+        system = "aarch64-linux";
+        modules = builtins.attrValues {
+          inherit (modules.categories)
+            gnupg home-manager internationalization network neovim nix shell;
+          inherit (modules.hardware) pi3;
+          inherit (modules.devices) owo;
+        } ++ [
+          (modules.users.superwhiskers.fromUserModules (builtins.attrValues {
+            inherit (modules.users.superwhiskers.modules)
+              directories shell neovim headless;
           }))
         ] ++ [ home-manager-module ];
       };
