@@ -15,6 +15,9 @@
   description = "utility functions for my system configuration";
 
   outputs = { self }: {
-    lib = { generateConfiguration = import ./generateConfiguration.nix; };
+    lib = {
+      createFlake = import ./createFlake.nix;
+      createUser = import ./createUser.nix;
+    };
   };
 }

@@ -11,17 +11,21 @@
 # OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 # PERFORMANCE OF THIS SOFTWARE.
 
-{ pkgs, ... }: {
-  # enable fish shell
-  programs.fish.enable = true;
-
-  # add main user account
-  users.users.superwhiskers = {
-    isNormalUser = true;
+{ utils, ... }:
+utils.lib.createUser {
+  username = "superwhiskers";
+  extraUserConfiguration = { pkgs, ... }: {
     shell = pkgs.fish;
     extraGroups = [ "wheel" "networkmanager" ];
   };
-
-  # enable home-manager
-  home-manager.users.superwhiskers = import ./home.nix;
+  modules = {
+    directories = ./directories.nix;
+    graphical = ./graphical.nix;
+    shell = ./shell.nix;
+    multimedia = ./multimedia.nix;
+    packages = ./packages.nix;
+    neovim = ./neovim.nix;
+    gnome = ./gnome.nix;
+    nyxt = ./nyxt.nix;
+  };
 }

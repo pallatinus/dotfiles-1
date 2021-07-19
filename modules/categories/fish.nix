@@ -1,4 +1,4 @@
-# generateConfiguration.nix - configuration outputs generation function
+# fish.nix - system-wide fish shell configuration
 #
 # Permission to use, copy, modify, and/or distribute this software for any
 # purpose with or without fee is hereby granted.
@@ -11,14 +11,7 @@
 # OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 # PERFORMANCE OF THIS SOFTWARE.
 
-{ self, nixpkgs, ... }:
-hosts:
-let
-  modules = modules.nixosModules;
-
-  revision = _: {
-    configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
-  };
-
-  hostToSystem = _: host: nixpkgs.lib.nixosSystem host;
-in { nixosConfigurations = builtins.mapAttrs hostToSystem hosts; }
+_: {
+  # enable fish
+  programs.fish.enable = true;
+}

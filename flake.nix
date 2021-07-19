@@ -30,6 +30,7 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         neovim-nightly-overlay.follows = "neovim-nightly-overlay";
+        utils.follows = "utils";
       };
     };
     utils.url = "path:./utils";
@@ -39,17 +40,21 @@
     let
       modules = inputs.modules.nixosModules;
       home-manager-module = inputs.home-manager.nixosModules.home-manager;
-    in utils.lib.generateConfiguration inputs {
+    in utils.lib.createFlake inputs {
       uwu = {
         system = "x86_64-linux";
         modules = builtins.attrValues {
-          inherit (modules.users) superwhiskers;
           inherit (modules.categories)
             audio fonts gnome gnupg home-manager internationalization neovim
-            network nix printing boot shell;
+            network nix printing boot shell fish;
           inherit (modules.hardware) t440p;
           inherit (modules.devices) uwu;
-        } ++ [ home-manager-module ];
+        } ++ [
+          (modules.users.superwhiskers.fromUserModules (builtins.attrValues {
+            inherit (modules.users.superwhiskers.modules)
+              directories graphical shell multimedia packages neovim gnome nyxt;
+          }))
+        ] ++ [ home-manager-module ];
       };
     };
 }

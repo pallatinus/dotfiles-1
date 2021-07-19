@@ -20,6 +20,7 @@
       url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    utils.url = "path:../utils";
   };
 
   outputs = inputs:
