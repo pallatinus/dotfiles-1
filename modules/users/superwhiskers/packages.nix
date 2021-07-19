@@ -21,20 +21,35 @@ let
   });
 in {
   # user packages
-  home.packages = builtins.attrValues {
-    inherit (pkgs)
-      ungoogled-chromium tor-browser-bundle-bin mullvad-vpn # networking
+  home.packages = (lib.attrVals [
+    # networking
+    "ungoogled-chromium"
+    "tor-browser-bundle-bin"
+    "mullvad-vpn"
 
-      tdesktop weechat element-desktop nicotine-plus # communication
+    # communication
+    "tdesktop"
+    "weechat"
+    "element-desktop"
+    "nicotine-plus"
 
-      musikcube # multimedia
+    # multimedia (TODO: put this in multimedia.nix with declarative configuration)
+    "musikcube"
 
-      anki keepassxc gimp rx blender # productivity
+    # productivity
+    "anki"
+    "keepassxc"
+    "gimp"
+    "rx"
+    "blender"
 
-      electrum # finance
+    # finance
+    "electrum"
 
-      tokei pavucontrol; # utilities
-  } ++ [
+    # utilities
+    "tokei"
+    "pavucontrol"
+  ] pkgs) ++ [
     # gaming
     multimc-with-jdk11
 

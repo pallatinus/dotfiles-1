@@ -14,6 +14,4 @@ another and as such, can be mixed and matched freely
 
 ## todo
 
-- make it possible to configure home-manager profiles in the same manner the entire system is (such
-as through removing graphical elements)
 - [handle passwords declaratively](https://github.com/Mic92/sops-nix)
