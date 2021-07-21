@@ -46,15 +46,6 @@
     powerOnBoot = false;
   };
 
-  # configure dnsmasq
-  /* services.dnsmasq = {
-       enable = true;
-
-       # set the dns servers
-       servers = [ "155.138.240.237" "2001:19f0:6401:b3d:5400:2ff:fe5a:fb9f" ];
-     };
-  */
-
   # enable the mullvad service
   services.mullvad-vpn.enable = true;
 

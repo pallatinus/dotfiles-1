@@ -29,5 +29,8 @@ _:
 
     # for some reason, this is enabled by default
     dhcpcd.enable = lib.mkDefault false;
+
+    # custom nameservers
+    nameservers = [ "155.138.240.237" "2001:19f0:6401:b3d:5400:2ff:fe5a:fb9f" ];
   };
 }
