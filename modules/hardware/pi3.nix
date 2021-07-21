@@ -11,7 +11,8 @@
 # OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 # PERFORMANCE OF THIS SOFTWARE.
 
-_: {
+_:
+{ pkgs, lib, ... }: {
   # kernel configuration
   boot = {
     # bootloader configuration
@@ -27,11 +28,21 @@ _: {
       };
     };
 
+    # configure wireless regulatory information
+    extraModprobeConfig = ''
+      options cf680211 ieee80211_regdom="US"
+    '';
+
     # kernel module configuration
     # (we only ever use the mainline kernel)
     initrd.kernelModules = [ "vc4" "bcm2835_dma" "i2c_bcm2835" ];
   };
 
-  # allow redistributable firmware to be used
-  hardware.enableRedistributableFirmware = true;
+  hardware = {
+    # allow redistributable firmware to be used
+    enableRedistributableFirmware = true;
+
+    # add the regulatory information package
+    firmware = lib.attrVals [ "wireless-regdb" ] pkgs;
+  };
 }
