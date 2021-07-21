@@ -11,7 +11,24 @@
 # OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 # PERFORMANCE OF THIS SOFTWARE.
 
-{ pkgs, lib, ... }: {
+_: {
+  # newer versions of firmwareLinuxNonfree break the wireless drivers
+  # https://github.com/NixOS/nixpkgs/issues/115652
+  nixpkgs.overlays = [
+    (self: super: {
+      firmwareLinuxNonfree = super.firmwareLinuxNonfree.overrideAttrs (old: {
+        version = "2020-12-18";
+        src = self.fetchgit {
+          url =
+            "https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git";
+          rev = "b79d2396bc630bfd9b4058459d3e82d7c3428599";
+          sha256 = "1rb5b3fzxk5bi6kfqp76q1qszivi0v1kdz1cwj2llp5sd9ns03b5";
+        };
+        outputHash = "1p7vn2hfwca6w69jhw5zq70w44ji8mdnibm1z959aalax6ndy146";
+      });
+    })
+  ];
+
   # kernel configuration
   boot = {
     # bootloader configuration
@@ -27,22 +44,11 @@
       };
     };
 
-    # configure wireless regulatory information
-    extraModprobeConfig = ''
-      options cf680211 ieee80211_regdom="US"
-    '';
-
     # kernel module configuration
     # (we only ever use the mainline kernel)
     initrd.kernelModules = [ "vc4" "bcm2835_dma" "i2c_bcm2835" ];
   };
 
-  hardware = {
-    # allow redistributable firmware to be used
-    enableRedistributableFirmware = true;
-
-    # add the regulatory information package
-    # https://github.com/NixOS/nixpkgs/issues/82462#issuecomment-598763687
-    firmware = lib.attrVals [ "wireless-regdb" ] pkgs;
-  };
+  # allow redistributable firmware to be used
+  hardware.enableRedistributableFirmware = true;
 }

@@ -12,9 +12,9 @@
 # PERFORMANCE OF THIS SOFTWARE.
 
 _: {
-  # override fish to disable testing
   nixpkgs.overlays = [
     (self: super: {
+      # override fish to disable testing
       fish = super.fish.overrideAttrs (_: { doCheck = false; });
     })
   ];

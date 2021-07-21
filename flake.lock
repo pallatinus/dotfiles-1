@@ -64,7 +64,7 @@
         ]
       },
       "locked": {
-        "narHash": "sha256-sX9hV06q0exHZHeseGb6jddDI2rc5IRmWTYfM0oi95w=",
+        "narHash": "sha256-26LPUiPfhS1Q10qmPMDnqfaMguH9rDEU3m28o6k3iXg=",
         "path": "./modules",
         "type": "path"
       },
@@ -130,8 +130,8 @@
       },
       "original": {
         "owner": "NixOS",
-        "ref": "nixos-unstable",
         "repo": "nixpkgs",
+        "rev": "967d40bec14be87262b21ab901dbace23b7365db",
         "type": "github"
       }
     },
