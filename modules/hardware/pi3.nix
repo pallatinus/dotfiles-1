@@ -11,7 +11,6 @@
 # OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 # PERFORMANCE OF THIS SOFTWARE.
 
-_:
 { pkgs, lib, ... }: {
   # kernel configuration
   boot = {
@@ -43,6 +42,7 @@ _:
     enableRedistributableFirmware = true;
 
     # add the regulatory information package
+    # https://github.com/NixOS/nixpkgs/issues/82462#issuecomment-598763687
     firmware = lib.attrVals [ "wireless-regdb" ] pkgs;
   };
 }
