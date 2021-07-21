@@ -14,11 +14,12 @@
 { self, nixpkgs, ... }:
 hosts:
 let
+  lib = nixpkgs.lib;
   modules = modules.nixosModules;
 
   revision = _: {
     configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
   };
 
-  hostToSystem = _: host: nixpkgs.lib.nixosSystem host;
+  hostToSystem = _: host: lib.makeOverridable lib.nixosSystem host;
 in { nixosConfigurations = builtins.mapAttrs hostToSystem hosts; }

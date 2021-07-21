@@ -26,4 +26,5 @@ provideInputs {
   boot = import ./boot.nix;
   shell = import ./shell.nix;
   fish = import ./fish.nix;
+  nixpkgs = import ./nixpkgs.nix;
 }

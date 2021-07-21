@@ -94,6 +94,9 @@
   # allow mosh system-wide
   environment.systemPackages = [ pkgs.mosh ];
 
+  # configure the swap device
+  swapDevices = [{ label = "SWAP"; }];
+
   # configure partitioning
   fileSystems."/" = {
     device = "/dev/disk/by-label/NIXOS_SD";

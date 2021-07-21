@@ -91,4 +91,7 @@
       options = [ "noatime" ];
     };
   };
+
+  # enable binfmt with system emulation
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 }

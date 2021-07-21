@@ -1,4 +1,4 @@
-# network.nix - general network stack configuration
+# nixpkgs.nix - configuration relating to nixpkgs
 #
 # Permission to use, copy, modify, and/or distribute this software for any
 # purpose with or without fee is hereby granted.
@@ -11,23 +11,11 @@
 # OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 # PERFORMANCE OF THIS SOFTWARE.
 
-_:
-{ lib, ... }: {
-  # configure and enable networkmanager
-  networking = {
-    wireless.enable = false;
-
-    networkmanager = {
-      enable = true;
-
-      # iwd is more modern
-      wifi.backend = "iwd";
-    };
-
-    # this is discouraged (but enabled by default?)
-    useDHCP = false;
-
-    # for some reason, this is enabled by default
-    dhcpcd.enable = lib.mkDefault false;
-  };
+_: {
+  # override fish to disable testing
+  nixpkgs.overlays = [
+    (self: super: {
+      fish = super.fish.overrideAttrs (_: { doCheck = false; });
+    })
+  ];
 }
