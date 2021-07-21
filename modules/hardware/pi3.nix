@@ -24,7 +24,7 @@ _: {
           rev = "b79d2396bc630bfd9b4058459d3e82d7c3428599";
           sha256 = "1rb5b3fzxk5bi6kfqp76q1qszivi0v1kdz1cwj2llp5sd9ns03b5";
         };
-        outputHash = "138gvh7fbym753kfjfwa2ymzwsyyn2mkl5lrwzgwj3ifybn4ipbn";
+        outputHash = "1p7vn2hfwca6w69jhw5zq70w44ji8mdnibm1z959aalax6ndy146";
       });
     })
   ];
