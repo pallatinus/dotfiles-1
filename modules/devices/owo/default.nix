@@ -25,8 +25,11 @@
   # set the hostname
   networking.hostName = "owo";
 
-  # enable the wireless network interface
-  networking.interfaces.wlan0.useDHCP = true;
+  # enable the wireless and wired network interfaces
+  networking.interfaces = {
+    eth0.useDHCP = true;
+    wlan0.useDHCP = true;
+  };
 
   # configure nftables instead of using the built-in firewall
   networking.firewall.enable = false;
