@@ -64,7 +64,7 @@
         ]
       },
       "locked": {
-        "narHash": "sha256-x72gKZsq/0byU+TMdlvbfQMEDnRX2zn0cddgWfgf/QM=",
+        "narHash": "sha256-qhp4vkbQspdMbFKQJxc76Cy+dVu6deLnEfYP1eJshSE=",
         "path": "./modules",
         "type": "path"
       },
