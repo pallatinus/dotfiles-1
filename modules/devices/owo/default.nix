@@ -38,62 +38,6 @@
     rulesetFile = ./nftables.conf;
   };
 
-  # configure sshd
-  services.openssh = {
-    enable = true;
-    openFirewall = false;
-    kexAlgorithms = [ "curve25519-sha256@libssh.org" ];
-    ciphers = [
-      "chacha20-poly1305@openssh.com"
-      "aes256-gcm@openssh.com"
-      "aes128-gcm@openssh.com"
-      "aes256-ctr"
-      "aes192-ctr"
-      "aes128-ctr"
-    ];
-    macs = [
-      "hmac-sha2-512-etm@openssh.com"
-      "hmac-sha2-256-etm@openssh.com"
-      "umac-128-etm@openssh.com"
-    ];
-    passwordAuthentication = false;
-    permitRootLogin = "no";
-    challengeResponseAuthentication = false;
-    extraConfig = ''
-      # force the session key to be regenerated after either 100 kilobytes of data
-      # are transmitted or an hour has passed
-
-      RekeyLimit 100K 30m
-
-      # disable compression for security reasons
-
-      Compression no
-
-      # don't read the user's ~/.rhosts and ~/.shosts files
-
-      IgnoreRhosts yes
-
-      # harden the login parameters
-
-      LoginGraceTime 2m
-      StrictModes yes
-      MaxAuthTries 1
-      MaxSessions 10
-
-      # disable additional authentication methods
-
-      HostbasedAuthentication no
-      RhostsRSAAuthentication no
-      PermitEmptyPasswords no
-      UsePAM no
-
-      # additional forwarding configuration
-
-      AllowStreamLocalForwarding all
-      AllowTCPForwarding yes
-    '';
-  };
-
   # allow mosh system-wide
   environment.systemPackages = [ pkgs.mosh ];
 
@@ -106,6 +50,9 @@
     fsType = "ext4";
     options = [ "noatime" ];
   };
+
+  # enable syncthing
+  services.syncthing.enable = true;
 
   # enable zram
   zramSwap.enable = true;
