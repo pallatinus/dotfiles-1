@@ -57,7 +57,6 @@ _: {
       # disable additional authentication methods
 
       HostbasedAuthentication no
-      RhostsRSAAuthentication no
       PermitEmptyPasswords no
       UsePAM no
 
