@@ -12,6 +12,43 @@ another and as such, can be mixed and matched freely
 	- hardware/ - system configuration related to specific configurations of hardware
 	- users/ - configuration for specific user accounts
 
+## partitioning
+
+you can already figure this out from the device-specific configuration files, but here is an
+easier-to-understand breakdown of how the individual devices are partitioned, along with
+justification of various design choices and documentation of how things were done
+
+### owo
+
+owo---my pi3---currently has a partition layout that looks a little like this (on a 32gb sdcard)
+
+| partition | filesystem | size      | purpose                                                  |
+| --------- | ---------- | --------- | -------------------------------------------------------- |
+| 0         | fat32      | 30m       | boot partition containing u-boot for the pi's bootloader |
+| 1         | swap       | 4gb       | to allow for system rebuilds to be done on-device        |
+| 2         | ext4       | remainder | root partition                                           |
+
+i've found throughout my usage of nixos on it that swap space is **very** necessary, due to the
+lack of sufficient ram to complete system upgrades without any
+
+i feel that it's also necessary to note that this was not installed using the official sdcard
+image, it was instead generated using a tweaked configuration (not in this repository, but the only
+change was enabling root login in sshd, iirc) and [this
+tool](https://github.com/nix-community/nixos-generators)
+
+### uwu
+
+uwu---my thinkpad t440p---has a partition layout lacking any swap whatsoever
+
+| partition | filesystem | size      | purpose                 |
+| --------- | ---------- | --------- | ----------------------- |
+| 0         | fat32      | 500m      | efi system partition    |
+| 1         | luks2      | remainder | partial disk encryption |
+| 1.0       | ext4       | remainder | root partition          |
+
+keep in mind that this is on a 500gb samsung ssd. that, along with the fact that i already have
+16gb of ram, is why there is no swap partition
+
 ## todo
 
 there are more goals i have listed elsewhere, but here are some big ones that i'm okay sharing
