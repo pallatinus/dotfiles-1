@@ -15,12 +15,7 @@
   description = "arbitrarily structured system configuration database";
 
   inputs = {
-    # currently pinned as newer versions break font rendering in chromium
-    # https://github.com/NixOS/nixpkgs/issues/131074
-    #
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs.url =
-      "github:NixOS/nixpkgs/967d40bec14be87262b21ab901dbace23b7365db";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
