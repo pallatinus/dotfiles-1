@@ -23,7 +23,7 @@ justification of various design choices and documentation of how things were don
 owo---my pi3---currently has a partition layout that looks a little like this (on a 32gb sdcard)
 
 | partition | filesystem | size      | purpose                                                  |
-| --------- | ---------- | --------- | -------------------------------------------------------- |
+|-----------|------------|-----------|----------------------------------------------------------|
 | 0         | fat32      | 30m       | boot partition containing u-boot for the pi's bootloader |
 | 1         | swap       | 4gb       | to allow for system rebuilds to be done on-device        |
 | 2         | ext4       | remainder | root partition                                           |
@@ -41,7 +41,7 @@ tool](https://github.com/nix-community/nixos-generators)
 uwu---my thinkpad t440p---has a partition layout lacking any swap whatsoever
 
 | partition | filesystem | size      | purpose                 |
-| --------- | ---------- | --------- | ----------------------- |
+|-----------|------------|-----------|-------------------------|
 | 0         | fat32      | 500m      | efi system partition    |
 | 1         | luks2      | remainder | partial disk encryption |
 | 1.0       | ext4       | remainder | root partition          |
