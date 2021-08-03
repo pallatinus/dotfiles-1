@@ -18,8 +18,11 @@
 
   # enable and make neovim the default editor
   programs.neovim = {
+    # TODO: disabled because of the following issue
+    #       https://github.com/NixOS/nixpkgs/issues/132389
+    # enable = true;
+
     package = pkgs.neovim-nightly;
-    enable = true;
     defaultEditor = true;
   };
 }
