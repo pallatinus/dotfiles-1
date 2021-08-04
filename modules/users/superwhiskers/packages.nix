@@ -45,6 +45,7 @@ in {
 
     # finance
     "electrum"
+    "monero-gui"
 
     # utilities
     "tokei"
