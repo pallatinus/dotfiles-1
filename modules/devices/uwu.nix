@@ -31,14 +31,8 @@
     wlan0.useDHCP = true;
   };
 
-  # configure the firewall
-  networking.firewall = {
-    # necessary to make mullvad work (?)
-    checkReversePath = false;
-
-    # expose the port used for slsk
-    allowedTCPPorts = [ 59815 ];
-  };
+  # expose the port used for slsk
+  networking.firewall.allowedTCPPorts = [ 59815 ];
 
   # disable bluetooth
   hardware.bluetooth = {
