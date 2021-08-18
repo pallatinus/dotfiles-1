@@ -46,7 +46,7 @@
         modules = builtins.attrValues {
           inherit (modules.categories)
             audio fonts gnome gnupg home-manager internationalization neovim
-            network nix printing boot shell fish nixpkgs podman;
+            network nix printing boot shell fish podman;
           inherit (modules.hardware) t440p;
           inherit (modules.devices) uwu;
         } ++ [
@@ -62,7 +62,7 @@
         modules = builtins.attrValues {
           inherit (modules.categories)
             gnupg home-manager internationalization network neovim nix shell
-            nixpkgs openssh;
+            openssh podman;
           inherit (modules.hardware) pi3;
           inherit (modules.devices) owo;
         } ++ [
