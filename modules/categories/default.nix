@@ -28,4 +28,5 @@ provideInputs {
   fish = import ./fish.nix;
   nixpkgs = import ./nixpkgs.nix;
   openssh = import ./openssh.nix;
+  podman = import ./podman.nix;
 }
