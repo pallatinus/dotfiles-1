@@ -31,8 +31,8 @@
     wlan0.useDHCP = true;
   };
 
-  # expose the port used for slsk
-  networking.firewall.allowedTCPPorts = [ 59815 ];
+  # expose the ports used for slsk and mitmproxy
+  networking.firewall.allowedTCPPorts = [ 59815 8080 ];
 
   # disable bluetooth
   hardware.bluetooth = {
